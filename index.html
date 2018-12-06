@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>projekty</title>
+
+	<link rel="icon" href="favicon.ico">
+
+	<style>
+
+		body {
+			font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+			font-size: 12px;
+			color: #1e2228;
+			background-color: #ebedef;
+			text-decoration: none;
+		}
+
+		.divDepartment {
+			vertical-align: bottom; /*middle;*/
+			margin: 10px 10px 10px 10px; 
+			padding: 5px 5px 5px 5px;
+			background-color: #f4f5f8;
+			background-image: url("img/Papier - biuro papierowe.jpg");
+			/*width: 300px; */
+			height: 300px; 
+			}
+
+		.dropbtn {
+			background-color: #f4f5f8;
+			padding: 5px 5px 5px 5px;
+			width: 25px; 
+			height: 25px; 
+			border: 1px solid #1e2228;
+			cursor: pointer;
+		}
+
+		.dropbtn:hover, .dropbtn:focus {
+			background-color: #e0e1e2;
+		}
+
+		.clsMenu {
+			margin: 10px 10px 10px 10px; 
+			position: relative;
+			display: inline-block;
+		}
+
+		.clsSubMenu {
+			display: none;
+			position: absolute;
+			background-color: #f4f5f8;
+			min-width: 160px;
+			box-shadow: 0 1px 2px 0px rgba(0,0,0,0.24);
+			z-index: 1;
+		}
+
+		.clsSubMenu div {
+			padding: 12px 16px;
+			display: block;
+		}
+
+		.clsSubMenu div:hover {background-color: #e0e1e2}
+
+		.show {display:block;}
+	</style>
+
+</head>
+<body>
+	<div id="divDepartments"></div>
+
+		<div class="clsMenu">
+				<button onclick="myFunction('mnuProgram')" class="dropbtn">+</button>
+				<div id="mnuProgram" class="clsSubMenu">
+					<div onclick="addProgram(1)" onTouchStart="run(1)">Finanse</div>
+					<div onclick="addProgram(2)" onTouchStart="run(2)">Handel</div>
+					<div onclick="addProgram(3)" onTouchStart="run(3)">Środki</div>
+					<div onclick="addProgram(4)" onTouchStart="run(4)">Kadry</div>
+					<div onclick="addProgram(5)" onTouchStart="run(5)">eBox</div>
+				</div>
+			  </div>
+
+			  
+
+</body>
+<script>
+	
+	function myFunction(whatMenu) {
+		//toggle dodaje albo usuwa jak już jest
+		document.getElementById(whatMenu).classList.toggle("show");
+	}
+	
+	function addProgram(i) {
+		document.getElementById("divDepartments").innerHTML += `
+			<div class="divDepartment" id="Prd${i}"><p>Dział: ${i}</p>
+			<img src="img/stanowisko1.gif" height="100" width="150">
+			<img src="img/stanowisko666.gif" height="150" width="100">
+
+
+			<div class="clsMenu">
+				<button onclick="myFunction('mnuFiczerPrd${i}')" class="dropbtn">+</button>
+				<div id="mnuFiczerPrd${i}" class="clsSubMenu">
+					<div onclick="addFiczer(1, 'Prd${i}')" onTouchStart="addFiczer(1, 'prd${i}')">Dodatkowe stanowisko</div>
+					<div onclick="addFiczer(2, 'Prd${i}')" onTouchStart="addFiczer(2, 'prd${i}')">Raporty</div>
+					<div onclick="addFiczer(3, 'Prd${i}')" onTouchStart="addFiczer(3, 'prd${i}')">eBOX</div>
+				</div>
+			</div>
+
+			</div>`;
+		document.getElementById("mnuProgram").classList.toggle("show");
+	}
+	
+	function addFiczer(i, idPrd) {
+		document.getElementById(idPrd).innerHTML += `<p>Ficzer = ${i}</p>`;
+		document.getElementById("mnuFiczer" + idPrd).classList.toggle("show");
+	}
+	
+</script>
+</html>
